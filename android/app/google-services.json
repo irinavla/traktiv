@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "943133182263",
+    "firebase_url": "https://tracktive-8445b.firebaseio.com",
+    "project_id": "tracktive-8445b",
+    "storage_bucket": "tracktive-8445b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943133182263:android:99b7229abb06f459",
+        "android_client_info": {
+          "package_name": "com.traktiv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943133182263-kjuv5jsqbft0vupgh5n3i2elkv57i9rm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3UK9iB-KvL5FqTUJnd_jNPhs0hOpi-Vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943133182263-kjuv5jsqbft0vupgh5n3i2elkv57i9rm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "943133182263-thc0jee0du6ah87vf7lb83s77uk2t1dm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.Traktiv"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
