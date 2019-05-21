@@ -7,6 +7,9 @@ const RootNavigator = createStackNavigator(
     Start: {
       screen: StartScreen
     },
+  },
+  {
+    headerMode: 'none'
   }
 );
 

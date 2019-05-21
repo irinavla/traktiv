@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-navigation';
 import { colors } from '../styles/index.style';
 
 const Layout = ({ children }) => (
-  <View style={{ flex: 1, alignItems: 'center' }}>
+  <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
     <SafeAreaView style={styles.attribution}>
       {children}
     </SafeAreaView>
@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     paddingVertical: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: colors.white,
   },
 });

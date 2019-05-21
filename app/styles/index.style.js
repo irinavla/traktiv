@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const colors = {
   black: '#1B1C20',
-  black10: '#1B1C20',
+  black10: 'rgb(27,28,32)',
   black11: '#000000',
   white: '#FFFFFF',
   primary: '#334856',
@@ -18,6 +18,9 @@ export default StyleSheet.create({
   },
   textBlack: {
     color: colors.black,
+  },
+  textPrimary: {
+    color: colors.primary,
   },
   textPrimaryLighter: {
     color: colors.primaryLighter,
@@ -57,5 +60,14 @@ export default StyleSheet.create({
   },
   textCenter: {
     textAlign: 'center'
+  },
+  container: {
+    padding: 20
+  },
+  activitiesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    marginBottom: 20,
   }
 })
