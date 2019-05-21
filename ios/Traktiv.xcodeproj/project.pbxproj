@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -46,6 +45,25 @@
 		DB679B039C478AB36A19563A /* libPods-Traktiv-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5C81DBEAE6FFBF0A23C4008 /* libPods-Traktiv-tvOSTests.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
+		FB0BFBCCDF7643058DE32ACA /* Teko-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CEC142BF82A461086C9D4FC /* Teko-Bold.ttf */; };
+		EFD4F82917E64841961B1BEF /* Teko-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5F0A0392C21411592936629 /* Teko-Light.ttf */; };
+		895E871FB995431590CB699F /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C29D15B0756E468FA6ECFBB6 /* Teko-Medium.ttf */; };
+		79FCC53727614FCD92D81FFB /* Teko-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A60102A224AB9A4E9BC9E /* Teko-Regular.ttf */; };
+		B9B5B23FD73F4663AFA9FD28 /* Teko-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B33A501FB6C4CD1AC77712B /* Teko-SemiBold.ttf */; };
+		C54F51E466664B5C8E4D8532 /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 002AD02F076B48EEB87F439E /* WorkSans-Bold.ttf */; };
+		A5B57D34B0E747E2B6A106DC /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB81055D76B3413296F37BB3 /* WorkSans-Medium.ttf */; };
+		C5617E76C06A498CB69B76A3 /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28E6F438D17B440F8A6DAA85 /* WorkSans-Regular.ttf */; };
+		3B50F64687154239ADB2A7E6 /* WorkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C12DD8DDB514413098DE2419 /* WorkSans-SemiBold.ttf */; };
+		CD46C015157C43E1AB3115CE /* Teko-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20BA2D1E4F3D483B95D12931 /* Teko-Bold.ttf */; };
+		87998CBDF70F43D580CD02E3 /* Teko-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B31EB7B3CB4743A28BE5718A /* Teko-Light.ttf */; };
+		7A61ABEBAE214C1784855E69 /* Teko-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D6F8DD83CD4752B7CC4A41 /* Teko-Medium.ttf */; };
+		3E59A192821849CD9F469744 /* Teko-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76C237A7517446EB9C82F794 /* Teko-Regular.ttf */; };
+		2679320E85084AE7A2BD79FD /* Teko-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F814B383E5AB4373B1648495 /* Teko-SemiBold.ttf */; };
+		55288BF5D581478A9985EDD7 /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29FE323A903748FB90D156DF /* WorkSans-Bold.ttf */; };
+		E40A03ADC40340CDB477BBBE /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ADC9765750A4858BF580D15 /* WorkSans-Medium.ttf */; };
+		A05E31DDD29A495394D53F33 /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28775896C8A54D509695962F /* WorkSans-Regular.ttf */; };
+		392286E187D54A52933BC815 /* WorkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B2FCF74A1242B982F99374 /* WorkSans-SemiBold.ttf */; };
+		4885585B6DA841DAB5C3DB80 /* WorkSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074D209700464146B1057815 /* WorkSans-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +405,25 @@
 		F5C81DBEAE6FFBF0A23C4008 /* libPods-Traktiv-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Traktiv-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68CFD1ABEDEEF5B9B1E387A /* Pods-Traktiv-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Traktiv-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Traktiv-tvOS/Pods-Traktiv-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		F825CC27145A603C81B8C5D3 /* Pods-Traktiv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Traktiv.release.xcconfig"; path = "Target Support Files/Pods-Traktiv/Pods-Traktiv.release.xcconfig"; sourceTree = "<group>"; };
+		2CEC142BF82A461086C9D4FC /* Teko-Bold.ttf */ = {isa = PBXFileReference; name = "Teko-Bold.ttf"; path = "../app/static/fonts/Teko-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B5F0A0392C21411592936629 /* Teko-Light.ttf */ = {isa = PBXFileReference; name = "Teko-Light.ttf"; path = "../app/static/fonts/Teko-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C29D15B0756E468FA6ECFBB6 /* Teko-Medium.ttf */ = {isa = PBXFileReference; name = "Teko-Medium.ttf"; path = "../app/static/fonts/Teko-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3B2A60102A224AB9A4E9BC9E /* Teko-Regular.ttf */ = {isa = PBXFileReference; name = "Teko-Regular.ttf"; path = "../app/static/fonts/Teko-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7B33A501FB6C4CD1AC77712B /* Teko-SemiBold.ttf */ = {isa = PBXFileReference; name = "Teko-SemiBold.ttf"; path = "../app/static/fonts/Teko-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		002AD02F076B48EEB87F439E /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; name = "WorkSans-Bold.ttf"; path = "../app/static/fonts/WorkSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AB81055D76B3413296F37BB3 /* WorkSans-Medium.ttf */ = {isa = PBXFileReference; name = "WorkSans-Medium.ttf"; path = "../app/static/fonts/WorkSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		28E6F438D17B440F8A6DAA85 /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; name = "WorkSans-Regular.ttf"; path = "../app/static/fonts/WorkSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C12DD8DDB514413098DE2419 /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "WorkSans-SemiBold.ttf"; path = "../app/static/fonts/WorkSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		20BA2D1E4F3D483B95D12931 /* Teko-Bold.ttf */ = {isa = PBXFileReference; name = "Teko-Bold.ttf"; path = "../assets/fonts/Teko-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B31EB7B3CB4743A28BE5718A /* Teko-Light.ttf */ = {isa = PBXFileReference; name = "Teko-Light.ttf"; path = "../assets/fonts/Teko-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		53D6F8DD83CD4752B7CC4A41 /* Teko-Medium.ttf */ = {isa = PBXFileReference; name = "Teko-Medium.ttf"; path = "../assets/fonts/Teko-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		76C237A7517446EB9C82F794 /* Teko-Regular.ttf */ = {isa = PBXFileReference; name = "Teko-Regular.ttf"; path = "../assets/fonts/Teko-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F814B383E5AB4373B1648495 /* Teko-SemiBold.ttf */ = {isa = PBXFileReference; name = "Teko-SemiBold.ttf"; path = "../assets/fonts/Teko-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		29FE323A903748FB90D156DF /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; name = "WorkSans-Bold.ttf"; path = "../assets/fonts/WorkSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8ADC9765750A4858BF580D15 /* WorkSans-Medium.ttf */ = {isa = PBXFileReference; name = "WorkSans-Medium.ttf"; path = "../assets/fonts/WorkSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		28775896C8A54D509695962F /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; name = "WorkSans-Regular.ttf"; path = "../assets/fonts/WorkSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C1B2FCF74A1242B982F99374 /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "WorkSans-SemiBold.ttf"; path = "../assets/fonts/WorkSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		074D209700464146B1057815 /* WorkSans-Light.ttf */ = {isa = PBXFileReference; name = "WorkSans-Light.ttf"; path = "../assets/fonts/WorkSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,6 +688,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				A6A55746229316CF003B91E4 /* Recovered References */,
 				4D23F3E1FE90EBDEBCD4D9A5 /* Pods */,
+				EA1AA5D048E840AAAC3D639D /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -701,6 +739,33 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		EA1AA5D048E840AAAC3D639D /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				2CEC142BF82A461086C9D4FC /* Teko-Bold.ttf */,
+				B5F0A0392C21411592936629 /* Teko-Light.ttf */,
+				C29D15B0756E468FA6ECFBB6 /* Teko-Medium.ttf */,
+				3B2A60102A224AB9A4E9BC9E /* Teko-Regular.ttf */,
+				7B33A501FB6C4CD1AC77712B /* Teko-SemiBold.ttf */,
+				002AD02F076B48EEB87F439E /* WorkSans-Bold.ttf */,
+				AB81055D76B3413296F37BB3 /* WorkSans-Medium.ttf */,
+				28E6F438D17B440F8A6DAA85 /* WorkSans-Regular.ttf */,
+				C12DD8DDB514413098DE2419 /* WorkSans-SemiBold.ttf */,
+				20BA2D1E4F3D483B95D12931 /* Teko-Bold.ttf */,
+				B31EB7B3CB4743A28BE5718A /* Teko-Light.ttf */,
+				53D6F8DD83CD4752B7CC4A41 /* Teko-Medium.ttf */,
+				76C237A7517446EB9C82F794 /* Teko-Regular.ttf */,
+				F814B383E5AB4373B1648495 /* Teko-SemiBold.ttf */,
+				29FE323A903748FB90D156DF /* WorkSans-Bold.ttf */,
+				8ADC9765750A4858BF580D15 /* WorkSans-Medium.ttf */,
+				28775896C8A54D509695962F /* WorkSans-Regular.ttf */,
+				C1B2FCF74A1242B982F99374 /* WorkSans-SemiBold.ttf */,
+				074D209700464146B1057815 /* WorkSans-Light.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1182,6 +1247,25 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				A6A557AD22931846003B91E4 /* GoogleService-Info.plist in Resources */,
+				FB0BFBCCDF7643058DE32ACA /* Teko-Bold.ttf in Resources */,
+				EFD4F82917E64841961B1BEF /* Teko-Light.ttf in Resources */,
+				895E871FB995431590CB699F /* Teko-Medium.ttf in Resources */,
+				79FCC53727614FCD92D81FFB /* Teko-Regular.ttf in Resources */,
+				B9B5B23FD73F4663AFA9FD28 /* Teko-SemiBold.ttf in Resources */,
+				C54F51E466664B5C8E4D8532 /* WorkSans-Bold.ttf in Resources */,
+				A5B57D34B0E747E2B6A106DC /* WorkSans-Medium.ttf in Resources */,
+				C5617E76C06A498CB69B76A3 /* WorkSans-Regular.ttf in Resources */,
+				3B50F64687154239ADB2A7E6 /* WorkSans-SemiBold.ttf in Resources */,
+				CD46C015157C43E1AB3115CE /* Teko-Bold.ttf in Resources */,
+				87998CBDF70F43D580CD02E3 /* Teko-Light.ttf in Resources */,
+				7A61ABEBAE214C1784855E69 /* Teko-Medium.ttf in Resources */,
+				3E59A192821849CD9F469744 /* Teko-Regular.ttf in Resources */,
+				2679320E85084AE7A2BD79FD /* Teko-SemiBold.ttf in Resources */,
+				55288BF5D581478A9985EDD7 /* WorkSans-Bold.ttf in Resources */,
+				E40A03ADC40340CDB477BBBE /* WorkSans-Medium.ttf in Resources */,
+				A05E31DDD29A495394D53F33 /* WorkSans-Regular.ttf in Resources */,
+				392286E187D54A52933BC815 /* WorkSans-SemiBold.ttf in Resources */,
+				4885585B6DA841DAB5C3DB80 /* WorkSans-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
