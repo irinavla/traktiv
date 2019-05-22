@@ -30,7 +30,7 @@ export default StyleSheet.create({
     color: colors.gray,
   },
   headline1: {
-    fontSize: 30,
+    fontSize: 28,
     fontFamily: 'Work Sans SemiBold',
   },
   headline2: {

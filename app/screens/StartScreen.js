@@ -28,7 +28,7 @@ export default class StartScreen extends Component {
     const { activities, scheduleModalIsVisible } = this.state;
     return (
       <Layout>
-        <ScheduleScreen isVisible={scheduleModalIsVisible} dismissModal={() => this.openScheduleActivityModal(scheduleModalIsVisible)} />
+        <ScheduleScreen isVisible={scheduleModalIsVisible} />
         <TracktivHeader />
         <View style={styles.container}>
           <View>

@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Card } from 'react-native-elements';
 import styles, { colors } from '../styles/index.style';
+import buttonStyles from '../styles/Buttons.style';
 import MoonIcon from '../../assets/icomoon';
-import IconButton from '../UI/IconButton';
 import PropTypes from 'prop-types';
 
 const cardStyles = StyleSheet.create({
@@ -28,20 +28,10 @@ const cardStyles = StyleSheet.create({
     height: 108
   },
   avatarStyle: {
-    backgroundColor: colors.white,
     width: 45,
     height: 45,
-    borderRadius: 50,
     marginTop: -45,
     marginBottom: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    shadowColor: `rgba(${colors.black10}, 0.1)`,
-    shadowOffset: { width: 2, height: 7 },
-    shadowOpacity: 0.1,
-    shadowRadius: 7,
   }
 })
 
@@ -55,7 +45,7 @@ const ActivityCard = ({ name, location, image, icon }) => (
   >
 
     <View style={[cardStyles.content, { justifyContent: 'center' }]}>
-      <View style={cardStyles.avatarStyle}>
+      <View style={[cardStyles.avatarStyle, buttonStyles.roundButton]}>
         <MoonIcon
           name={icon}
           size={28}
