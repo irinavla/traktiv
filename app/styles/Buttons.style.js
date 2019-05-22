@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { colors } from './index.style'
 
-export const buttonStyles = StyleSheet.create({
+export default buttonStyles = StyleSheet.create({
   button: {
     height: 50,
+    borderRadius: 50,
     alignSelf: 'stretch',
     width: '100%',
     justifyContent: 'center',
@@ -22,5 +23,11 @@ export const buttonStyles = StyleSheet.create({
   },
   buttonAccentDisabled: {
     backgroundColor: colors.accent
+  },
+  buttonText: {
+    fontSize: 16,
+    color: colors.white,
+    fontFamily: 'Teko Medium',
+    textTransform: 'uppercase'
   },
 })

@@ -8,6 +8,7 @@ export const colors = {
   primary: '#334856',
   primaryLighter: '#6E8CA0',
   accent: '#D97D54',
+  accentDarker: '#C4714B',
   gray: '#7D8184',
   softGray: '#425965',
 };

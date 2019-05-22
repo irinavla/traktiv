@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
-import { Card, Icon } from 'react-native-elements';
+import { View, StyleSheet, Text } from 'react-native';
+import { Card } from 'react-native-elements';
 import styles, { colors } from '../styles/index.style';
-import MoonIcon from '../../assets/icomoon'
+import MoonIcon from '../../assets/icomoon';
+import IconButton from '../UI/IconButton';
 import PropTypes from 'prop-types';
 
 const cardStyles = StyleSheet.create({
