@@ -3,7 +3,6 @@ import { Text, View, Modal, TouchableHighlight } from 'react-native'
 import { Icon } from 'react-native-elements'
 import styles, { colors } from '../styles/index.style';
 import buttonStyles from '../styles/Buttons.style';
-import modalStyles from '../styles/Modal.style';
 import MoonIcon from '../../assets/icomoon';
 import { activities } from '../static/data';
 
@@ -15,25 +14,18 @@ class ScheduleScreen extends Component {
       activities,
       activeButton: '',
       canSchedule: true,
-      showOverlay: false
     }
   }
 
-  closeModal(visible) {
-    this.setState({ showOverlay: visible })
+  saveActivity() {
+    this.props.navigation.goBack();
   }
 
   render() {
-    const { isVisible } = this.props;
-    const { activities, canSchedule, showOverlay } = this.state;
+    const { navigation } = this.props;
+    const { activities, canSchedule, activeButton } = this.state;
     return (
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={isVisible}
-        presentationStyle="overFullScreen"
-        style={{ backgroundColor: colors.primary }}
-      >
+      <View style={{ flex: 1, backgroundColor: colors.primary }} >
         <View style={modalStyles.modalInner}>
           <Icon
             size={20}
@@ -45,7 +37,7 @@ class ScheduleScreen extends Component {
               top: 50
             }}
             color={colors.white}
-            onPress={() => this.closeModal(!isVisible)}
+            onPress={() => navigation.goBack()}
           />
 
           <Text style={[styles.headline1, styles.textCenter, styles.textWhite]}>Schedule your activity</Text>
@@ -54,13 +46,19 @@ class ScheduleScreen extends Component {
             {activities.map((item, index) => (
               <View key={index}>
                 <TouchableHighlight
-                  style={[buttonStyles.roundButton, { width: 60, height: 60, marginBottom: 10 }]}
+                  style={[
+                    buttonStyles.roundButton,
+                    { width: 60, height: 60, marginBottom: 10 },
+                    activeButton === item.name ? buttonStyles.roundButtonActive : buttonStyles.roundButton
+                  ]}
+                  activeOpacity={0}
+                  onPress={() => this.setState({ activeButton: item.name })}
                 >
                   <MoonIcon
                     name={item.icon}
                     size={35}
                     containerStyle={buttonStyles.roundButton}
-                    color={colors.accent}
+                    color={activeButton === item.name ? colors.white : colors.accent}
                   />
                 </TouchableHighlight>
                 <Text style={[styles.title, styles.textCenter, styles.textWhite]}>{item.name}</Text>
@@ -70,7 +68,7 @@ class ScheduleScreen extends Component {
 
           <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 60, width: '100%' }}>
             <TouchableHighlight
-              activeOpacity={0}
+              activeOpacity={1}
               underlayColor={colors.accentDarker}
               style={[canSchedule ? buttonStyles.buttonPrimaryActive : buttonStyles.buttonPrimaryDisabled, buttonStyles.button]}
             >
@@ -78,7 +76,7 @@ class ScheduleScreen extends Component {
             </TouchableHighlight>
           </View>
         </View>
-      </Modal>
+      </View>
     )
   }
 }

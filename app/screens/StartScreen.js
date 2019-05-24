@@ -15,20 +15,14 @@ export default class StartScreen extends Component {
 
     this.state = {
       activities,
-      scheduledActivities: [],
-      scheduleModalIsVisible: false
+      scheduledActivities: []
     }
   }
 
-  openScheduleActivityModal(visible) {
-    this.setState({ scheduleModalIsVisible: visible })
-  }
-
   render() {
-    const { activities, scheduleModalIsVisible } = this.state;
+    const { activities } = this.state;
     return (
       <Layout>
-        <ScheduleScreen isVisible={scheduleModalIsVisible} />
         <TracktivHeader />
         <View style={styles.container}>
           <View>
@@ -51,7 +45,7 @@ export default class StartScreen extends Component {
               <TouchableHighlight
                 activeOpacity={0}
                 underlayColor={colors.accentDarker}
-                onPress={() => this.openScheduleActivityModal(!scheduleModalIsVisible)}
+                onPress={() => this.props.navigation.navigate('Schedule')}
                 style={[buttonStyles.button, buttonStyles.buttonAccentActive]}
               >
                 <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>

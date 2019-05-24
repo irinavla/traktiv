@@ -43,6 +43,6 @@ export default buttonStyles = StyleSheet.create({
     shadowRadius: 7,
   },
   roundButtonActive: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.accent,
   }
 })
