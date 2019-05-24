@@ -9,7 +9,8 @@ export default modalStyles = StyleSheet.create({
     backgroundColor: colors.primary,
     paddingTop: 90,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    flex: 1
   },
   activitiesWrapper: {
     width: '100%',

@@ -44,5 +44,38 @@ export default buttonStyles = StyleSheet.create({
   },
   roundButtonActive: {
     backgroundColor: colors.accent,
+  },
+  dropdownContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 56,
+    borderColor: colors.accent,
+    marginTop: 10
+  },
+  dropdownText: {
+    fontSize: 15,
+    fontFamily: 'WorkSans-Light',
+    color: colors.primary,
+    flex: 1,
+    width: '80%'
+  },
+  dropdownTextWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopLeftRadius: 6,
+    borderBottomLeftRadius: 6,
+    paddingLeft: 20
+  },
+  dropdownButton: {
+    borderTopRightRadius: 6,
+    borderBottomRightRadius: 6,
+    width: 56,
+    backgroundColor: colors.accent,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, Modal, TouchableHighlight } from 'react-native'
+import { Text, View, TouchableHighlight, Picker } from 'react-native'
 import { Icon } from 'react-native-elements'
 import styles, { colors } from '../styles/index.style';
 import buttonStyles from '../styles/Buttons.style';
+import modalStyles from '../styles/Modal.style';
 import MoonIcon from '../../assets/icomoon';
 import { activities } from '../static/data';
 
@@ -12,7 +13,11 @@ class ScheduleScreen extends Component {
 
     this.state = {
       activities,
-      activeButton: '',
+      selectedActivity: {
+        name: '',
+        duration: '15 min',
+        slot: ''
+      },
       canSchedule: true,
     }
   }
@@ -21,9 +26,38 @@ class ScheduleScreen extends Component {
     this.props.navigation.goBack();
   }
 
+  updateActivityName = (value) => {
+    this.setState({
+      selectedActivity: {
+        ...this.state.selectedActivity,
+        name: value
+      }
+    })
+  }
+
+  updateActivityDuration = (value) => {
+    this.setState({
+      selectedActivity: {
+        ...this.state.selectedActivity,
+        duration: value
+      }
+    })
+  }
+
+  updateActivitySlot = (value) => {
+    this.setState({
+      selectedActivity: {
+        ...this.state.selectedActivity,
+        slot: value
+      }
+    })
+  }
+
   render() {
     const { navigation } = this.props;
-    const { activities, canSchedule, activeButton } = this.state;
+    const { activities, canSchedule, selectedActivity } = this.state;
+    const durationOptions = ['15 min', '30 min', '45 min', '1 h', '1 h 30 min', '2 h'];
+
     return (
       <View style={{ flex: 1, backgroundColor: colors.primary }} >
         <View style={modalStyles.modalInner}>
@@ -49,22 +83,50 @@ class ScheduleScreen extends Component {
                   style={[
                     buttonStyles.roundButton,
                     { width: 60, height: 60, marginBottom: 10 },
-                    activeButton === item.name ? buttonStyles.roundButtonActive : buttonStyles.roundButton
+                    selectedActivity.name === item.name ? buttonStyles.roundButtonActive : buttonStyles.roundButton
                   ]}
                   activeOpacity={0}
-                  onPress={() => this.setState({ activeButton: item.name })}
+                  onPress={() => this.updateActivityName(item.name)}
                 >
                   <MoonIcon
                     name={item.icon}
                     size={35}
                     containerStyle={buttonStyles.roundButton}
-                    color={activeButton === item.name ? colors.white : colors.accent}
+                    color={selectedActivity.name === item.name ? colors.white : colors.accent}
                   />
                 </TouchableHighlight>
                 <Text style={[styles.title, styles.textCenter, styles.textWhite]}>{item.name}</Text>
               </View>
             ))}
           </View>
+
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.bodyCopy, styles.textWhite]}>How long do you want to do this activity?</Text>
+
+            <View style={buttonStyles.dropdownContainer}>
+              <View style={[buttonStyles.dropdownTextWrapper]}>
+                <Text style={buttonStyles.dropdownText}>{selectedActivity.duration}</Text>
+              </View>
+
+              <TouchableHighlight style={buttonStyles.dropdownButton}>
+                <MoonIcon
+                  name='icn_dropdown'
+                  size={15}
+                  containerStyle={{ backgroundColor: colors.accent }}
+                  style={{ marginTop: -5 }}
+                  color={colors.white}
+                />
+              </TouchableHighlight>
+            </View>
+
+            <Picker
+              testID="selectDuration"
+              mode="dropdown"
+              selectedValue={selectedActivity.duration} onValueChange={this.updateActivityDuration}>
+              {durationOptions.map((item, index) => <Picker.Item key={index} label={item} value={item} />)}
+            </Picker>
+          </View>
+
 
           <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 60, width: '100%' }}>
             <TouchableHighlight
