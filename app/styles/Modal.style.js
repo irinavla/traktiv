@@ -10,7 +10,7 @@ export default modalStyles = StyleSheet.create({
     paddingTop: 90,
     paddingLeft: 20,
     paddingRight: 20,
-    flex: 1
+    flex: 1,
   },
   activitiesWrapper: {
     width: '100%',
@@ -18,5 +18,17 @@ export default modalStyles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 40,
     marginBottom: 40
+  },
+  pickerWrapper: {
+    borderWidth: 0,
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: colors.primaryLighter,
+    zIndex: 1000,
+    width: '100%',
+    height: 200
+  },
+  pickerStyle: {
+
   }
 });
