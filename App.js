@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import RootNavigator from './app/navigation';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { rootReducer } from './app/redux/reducers';
 
-type Props = {};
-export default class App extends Component<Props> {
+export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+
+
+export default class App extends Component {
   render() {
     return (
-      <RootNavigator />
+      <Provider store={store}>
+        <RootNavigator />
+      </Provider>
     );
   }
 }

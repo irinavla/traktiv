@@ -1,30 +1,65 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableHighlight, Image } from 'react-native';
+import { Text, View, TouchableHighlight, Image, ScrollView, FlatList } from 'react-native';
 import Layout from '../UI/Layout';
 import styles, { colors } from '../styles/index.style';
 import buttonStyles from '../styles/Buttons.style';
 import TracktivHeader from '../UI/Header';
 import ActivityCard from '../UI/ActivityCard';
-import ScheduleScreen from './ScheduleScreen';
 import { activities } from '../static/data';
+import { connect } from 'react-redux';
+import { watchActivityData } from './../redux/app-redux';
+import firebase from 'react-native-firebase';
+import Activity from '../UI/Activity';
 
-export default class StartScreen extends Component {
+class StartScreen extends Component {
 
   constructor(props) {
     super(props);
 
+    this.ref = firebase.firestore().collection('activities');
+    this.unsubscribe = null;
+
     this.state = {
       activities,
-      scheduledActivities: []
+      scheduledActivities: [],
+      loading: true
     }
   }
 
+  componentDidMount() {
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  onCollectionUpdate = (querySnapshot) => {
+    const activities = [];
+    querySnapshot.forEach((doc) => {
+      console.log(doc);
+
+      const { title, duration } = doc.data();
+
+      activities.push({
+        key: doc.id,
+        title,
+        duration,
+      });
+    });
+
+    this.setState({
+      scheduledActivities: activities,
+      loading: false,
+    });
+  }
+
   render() {
-    const { activities } = this.state;
+    const { activities, scheduledActivities } = this.state;
     return (
       <Layout>
         <TracktivHeader />
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <View>
             <Text style={[styles.headline2, styles.textCenter, styles.textBlack, { marginBottom: 20 }]}>Track Your Activity</Text>
 
@@ -39,7 +74,16 @@ export default class StartScreen extends Component {
 
           <View>
             <Text style={[styles.headline2, styles.textBlack, { marginBottom: 20 }]}>Scheduled Activities</Text>
-            <Text style={[styles.bodyCopy, styles.textPrimaryLighter]}>You don’t have any activities scheduled yet.</Text>
+
+            {scheduledActivities ? (
+              <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap' }}>
+                <FlatList
+                  numColumns={4}
+                  data={scheduledActivities}
+                  renderItem={({ item }) => <Activity key={item.key} {...item} />}
+                />
+              </View>
+            ) : <Text style={[styles.bodyCopy, styles.textPrimaryLighter]}>You don’t have any activities scheduled yet.</Text>}
 
             <View style={styles.container}>
               <TouchableHighlight
@@ -58,14 +102,18 @@ export default class StartScreen extends Component {
               </TouchableHighlight>
             </View>
           </View>
-          {/* 
-          <Text style={[styles.headline3, styles.textCenter]}>Headline 3</Text>
-          <Text style={[styles.title, styles.textCenter]}>Title</Text>
-          <Text style={[styles.subtitle, styles.textCenter]}>Subtitle</Text>
-          <Text style={[styles.bodyCopy]}>Body copy</Text>
-          <Text style={[styles.bodyCopySmall]}>Body copy small</Text> */}
-        </View>
+
+        </ScrollView>
       </Layout>
     )
   }
 }
+
+
+const mapStateToProps = (state) => {
+  const { scheduledActivities } = state;
+  return { scheduledActivities }
+}
+
+
+export default connect(mapStateToProps)(StartScreen)
