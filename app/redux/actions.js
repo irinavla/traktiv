@@ -19,9 +19,9 @@
 //   }
 // };
 
-export const SET_ACTIVITY = friendIndex => (
+export const SET_ACTIVITY = activity => (
   {
     type: 'SET_ACTIVITY',
-    payload: friendIndex,
+    payload: activity,
   }
 );

@@ -39,12 +39,13 @@ class StartScreen extends Component {
     querySnapshot.forEach((doc) => {
       console.log(doc);
 
-      const { title, duration } = doc.data();
+      const { title, duration, slot } = doc.data();
 
       activities.push({
         key: doc.id,
         title,
         duration,
+        slot
       });
     });
 

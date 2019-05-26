@@ -5,7 +5,7 @@ import styles, { colors } from '../styles/index.style';
 import buttonStyles from '../styles/Buttons.style';
 import modalStyles from '../styles/Modal.style';
 import MoonIcon from '../../assets/icomoon';
-import { activities, availableSlots } from '../static/data';
+import { activities, slots } from '../static/data';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 
@@ -21,13 +21,16 @@ class ScheduleScreen extends Component {
 
     this.state = {
       activities,
-      availableSlots,
+      slots,
       availableDays: [],
+      availableSlots: [],
+      formattedSlots: [],
       bounceValue: new Animated.Value(100),
       selectedActivity: {
         name: '',
         duration: '15 min',
-        slot: ''
+        placeholderSlot: 'Pick a date & time or find a free slot',
+        slot: {}
       },
       showDurationPicker: false,
       showSlotPicker: false
@@ -36,61 +39,69 @@ class ScheduleScreen extends Component {
 
   getDates() {
     const start = Moment(), end = Moment().add(6, 'days');
-    const range = moment.range(moment(start), moment(end));
+    const range = Array.from(moment.range(moment(start), moment(end)).by('day'));
 
+    const datesRange = [];
+    const arr = {};
+    const formatted = [];
 
-    console.log(availableSlots);
-
-    const datesRange = Array.from(range.by('day'));
-    // const datesRange = Array.from(range.by('day')).map(d => d.format('dddd, MMMM Do'));
-
-
-    this.setState({ availableDays: datesRange });
-
-    console.log(datesRange);
-    console.log(Object.keys(availableSlots));
-
-
-    // let result = Object.entries(availableSlots).filter(item => {
-
-    //   let arr = [];
-
-    //   if (item[0] == 'Monday') {
-    //     arr.push({ Monday: item[1] });
-    //   } else {
-    //     return
-    //   }
-    //   return arr;
-
-    // });
-
-    // console.log(result);
-    let arr = [];
-
-    datesRange.forEach(item => {
-      let key = item.format('dddd, MMMM Do');
-      let values = Object.entries(availableSlots).filter(el => el[0] == item.format('dddd'));
-
-      const v = { ...values }
-      console.log(v[0]);
-      arr.push({ [key]: v[0] })
-      // if (item.format('dddd') === O)
+    // get weekdays from the date range
+    range.forEach(day => {
+      if (day.format('dddd') == 'Saturday' || day.format('dddd') == 'Sunday') {
+        return;
+      } else {
+        datesRange.push(day);
+      }
     })
 
+    // map dates over available slots
+    datesRange.forEach(item => {
+      let key = item.format('dddd, MMMM Do');
+      let res = Object.entries(slots).filter(it => it[0] == item.format('dddd'));
+      if (!res) {
+        return;
+      } else {
+        arr[key] = {
+          data: slots[item.format('dddd')],
+          time: item
+        }
+      }
+    })
 
-    console.log(arr);
+    // spread slots into separate entries so we can match them on picker change
+    Object.entries(arr).forEach(([day, sessions]) =>
+      Object.entries(sessions.data).forEach(slot => {
+        formatted.push({
+          date: day,
+          time: sessions.time,
+          start: slot[1].Start,
+          end: slot[1].End
+        })
+      }
+      )
+    )
+
+    this.setState({
+      availableSlots: arr,
+      formattedSlots: formatted
+    })
+  }
+
+  componentDidMount() {
+    this.getDates();
   }
 
   saveActivity() {
     this.props.navigation.goBack();
   }
 
-  addTodo() {
-    const { name, duration } = this.state.selectedActivity;
+  addActivity() {
+    const { name, duration, slot } = this.state.selectedActivity;
 
     firebase.firestore().collection('activities').add({
       title: name,
-      duration: duration
+      duration: duration,
+      slot: slot
     })
       .then(res => {
         console.log("Document written with ID: ", res.id);
@@ -98,7 +109,8 @@ class ScheduleScreen extends Component {
           selectedActivity: {
             name: '',
             duration: '15 min',
-            slot: ''
+            placeholderSlot: 'Pick a date & time or find a free slot',
+            slot: {}
           }
         });
       })
@@ -125,20 +137,30 @@ class ScheduleScreen extends Component {
     })
   }
 
-  updateActivitySlot = (value) => {
-    this.setState({
-      selectedActivity: {
-        ...this.state.selectedActivity,
-        slot: value
+  updateActivitySlot = (value, index) => {
+    console.log(value, index);
+    const { formattedSlots } = this.state;
+
+    formattedSlots.map((el, i) => {
+      if (index === i) {
+        this.setState({
+          selectedActivity: {
+            ...this.state.selectedActivity,
+            placeholderSlot: value,
+            slot: el
+          }
+        })
       }
     })
   }
 
-
-  componentDidMount() {
-    this.getDates();
+  openDurationPicker() {
+    this.setState({ showDurationPicker: true, showSlotPicker: false })
   }
 
+  openSlotPicker() {
+    this.setState({ showDurationPicker: false, showSlotPicker: true })
+  }
   render() {
     const { navigation } = this.props;
     const { activities, availableSlots, selectedActivity, showDurationPicker, showSlotPicker } = this.state;
@@ -193,10 +215,13 @@ class ScheduleScreen extends Component {
             testID="selectTimeSlot"
             mode="dialog"
             style={modalStyles.pickerStyle}
-            selectedValue={selectedActivity.slot} onValueChange={this.updateActivitySlot}>
+            selectedValue={selectedActivity.placeholderSlot} onValueChange={(value, index) => this.updateActivitySlot(value, index)}>
             {Object.keys(availableSlots).map(day =>
-              availableSlots[day].map(slot =>
-                <Picker.Item key={slot + day} label={`${day}: ${slot.Start}`} value={`${day}: ${slot.Start}`} />
+              availableSlots[day]['data'].map((slot, i) => {
+                console.log(slot);
+                return <Picker.Item key={`${day} ${i}`} label={`${day}: ${slot.Start}`} value={`${day}: ${slot.Start} - ${slot.End}`} />
+
+              }
               )
             )}
           </PickerIOS>
@@ -260,13 +285,13 @@ class ScheduleScreen extends Component {
             <Text style={[styles.bodyCopy, styles.textWhite]}>How long do you want to do this activity?</Text>
 
             <View style={buttonStyles.dropdownContainer}>
-              <TouchableHighlight style={[buttonStyles.dropdownTextWrapper]} onPress={() => this.setState({ showDurationPicker: true })}>
+              <TouchableHighlight style={[buttonStyles.dropdownTextWrapper]} onPress={() => this.openDurationPicker()}>
                 <Text style={buttonStyles.dropdownText}>{selectedActivity.duration}</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
                 style={buttonStyles.dropdownButton}
-                onPress={() => this.setState({ showDurationPicker: true })}
+                onPress={() => this.openDurationPicker()}
               >
                 <MoonIcon
                   name='icn_dropdown'
@@ -283,13 +308,13 @@ class ScheduleScreen extends Component {
             <Text style={[styles.bodyCopy, styles.textWhite]}>When do you want to do this activity?</Text>
 
             <View style={buttonStyles.dropdownContainer}>
-              <TouchableHighlight style={[buttonStyles.dropdownTextWrapper]} onPress={() => this.setState({ showSlotPicker: true })}>
-                <Text style={buttonStyles.dropdownText}>{selectedActivity.slot ? selectedActivity.slot : 'Pick a date & time or find a free slot'}</Text>
+              <TouchableHighlight style={[buttonStyles.dropdownTextWrapper]} onPress={() => this.openSlotPicker()}>
+                <Text style={buttonStyles.dropdownText}>{selectedActivity.placeholderSlot ? selectedActivity.placeholderSlot : 'Pick a date & time or find a free slot'}</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
                 style={buttonStyles.dropdownButton}
-                onPress={() => this.setState({ showSlotPicker: true })}
+                onPress={() => this.openSlotPicker()}
               >
                 <MoonIcon
                   name='icn_search_light'
@@ -311,7 +336,7 @@ class ScheduleScreen extends Component {
               activeOpacity={1}
               underlayColor={colors.accentDarker}
               style={[canSchedule ? buttonStyles.buttonPrimaryActive : buttonStyles.buttonPrimaryDisabled, buttonStyles.button]}
-              onPress={() => this.addTodo()}
+              onPress={() => this.addActivity()}
             >
               <Text style={buttonStyles.buttonText}>Schedule</Text>
             </TouchableHighlight>
@@ -321,8 +346,6 @@ class ScheduleScreen extends Component {
         {Platform.OS === 'ios' ? iosDurationPicker : androidDurationPicker}
 
         {iosSlotPicker}
-
-        {/* {Platform.OS === 'ios' ? iosSlotPicker : androidSlotPicker} */}
 
       </View>
     )

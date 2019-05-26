@@ -3,6 +3,7 @@ import { TouchableHighlight, View, Text, StyleSheet } from 'react-native';
 import MoonIcon from '../../assets/icomoon';
 import styles, { colors } from '../styles/index.style';
 import buttonStyles from '../styles/Buttons.style';
+import moment from 'moment';
 
 const activityStyle = StyleSheet.create({
   activityWrapper: {
@@ -16,9 +17,11 @@ const activityStyle = StyleSheet.create({
 
 class Activity extends React.PureComponent {
   render() {
-    const { title } = this.props;
+    const { title, slot } = this.props;
 
     const icon = title.toLowerCase() === 'spinning' ? 'spin' : title.toLowerCase();
+
+    console.log(slot);
 
     return (
       <View style={activityStyle.activityWrapper}>
@@ -35,7 +38,7 @@ class Activity extends React.PureComponent {
             color={colors.accent}
           />
         </View>
-        <Text style={[styles.headline3, styles.textCenter, styles.textGray]}>{title}</Text>
+        <Text style={[styles.headline3, styles.textCenter, styles.textGray]}>{slot.start}</Text>
       </View>
     );
   }

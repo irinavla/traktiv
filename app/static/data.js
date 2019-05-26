@@ -25,7 +25,7 @@ export const activities = [
   },
 ];
 
-export const availableSlots = {
+export const slots = {
   "Monday": [
     {
       "Start": "8:30",
