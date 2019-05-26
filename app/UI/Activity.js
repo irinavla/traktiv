@@ -9,7 +9,7 @@ const activityStyle = StyleSheet.create({
   activityWrapper: {
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     width: '25%',
     marginBottom: 20
   }
@@ -18,10 +18,7 @@ const activityStyle = StyleSheet.create({
 class Activity extends React.PureComponent {
   render() {
     const { title, slot } = this.props;
-
     const icon = title.toLowerCase() === 'spinning' ? 'spin' : title.toLowerCase();
-
-    console.log(slot);
 
     return (
       <View style={activityStyle.activityWrapper}>
@@ -38,7 +35,10 @@ class Activity extends React.PureComponent {
             color={colors.accent}
           />
         </View>
-        <Text style={[styles.headline3, styles.textCenter, styles.textGray]}>{slot.start}</Text>
+        <Text style={[styles.headline3, styles.textCenter, styles.textGray]}>{slot.time.month} {slot.time.dayofMonth}</Text>
+        <Text style={[styles.headline3, styles.textCenter, styles.textGray]}>{slot.start} - {slot.end}</Text>
+
+
       </View>
     );
   }

@@ -58,12 +58,17 @@ class ScheduleScreen extends Component {
     datesRange.forEach(item => {
       let key = item.format('dddd, MMMM Do');
       let res = Object.entries(slots).filter(it => it[0] == item.format('dddd'));
+
       if (!res) {
         return;
       } else {
         arr[key] = {
           data: slots[item.format('dddd')],
-          time: item
+          time: {
+            dayofWeek: item.format('dddd'),
+            dayofMonth: item.format('D'),
+            month: item.format('MMMM')
+          }
         }
       }
     })
@@ -74,6 +79,7 @@ class ScheduleScreen extends Component {
         formatted.push({
           date: day,
           time: sessions.time,
+          formattedSlot: `${day}, ${slot[1].Start}`,
           start: slot[1].Start,
           end: slot[1].End
         })
@@ -89,10 +95,6 @@ class ScheduleScreen extends Component {
 
   componentDidMount() {
     this.getDates();
-  }
-
-  saveActivity() {
-    this.props.navigation.goBack();
   }
 
   addActivity() {
@@ -112,7 +114,7 @@ class ScheduleScreen extends Component {
             placeholderSlot: 'Pick a date & time or find a free slot',
             slot: {}
           }
-        });
+        }, () => this.props.navigation.goBack());
       })
       .catch(error => {
         console.error("Error adding document: ", error);
@@ -143,6 +145,7 @@ class ScheduleScreen extends Component {
 
     formattedSlots.map((el, i) => {
       if (index === i) {
+        console.log(el);
         this.setState({
           selectedActivity: {
             ...this.state.selectedActivity,
@@ -163,7 +166,7 @@ class ScheduleScreen extends Component {
   }
   render() {
     const { navigation } = this.props;
-    const { activities, availableSlots, selectedActivity, showDurationPicker, showSlotPicker } = this.state;
+    const { activities, availableSlots, formattedSlots, selectedActivity, showDurationPicker, showSlotPicker } = this.state;
     const durationOptions = ['15 min', '30 min', '45 min', '1 h', '1 h 30 min', '2 h'];
     const canSchedule = selectedActivity.name && selectedActivity.duration && selectedActivity.slot ? true : false;
 
@@ -218,9 +221,7 @@ class ScheduleScreen extends Component {
             selectedValue={selectedActivity.placeholderSlot} onValueChange={(value, index) => this.updateActivitySlot(value, index)}>
             {Object.keys(availableSlots).map(day =>
               availableSlots[day]['data'].map((slot, i) => {
-                console.log(slot);
-                return <Picker.Item key={`${day} ${i}`} label={`${day}: ${slot.Start}`} value={`${day}: ${slot.Start} - ${slot.End}`} />
-
+                return <Picker.Item key={`${day} ${i}`} label={`${day}: ${slot.Start}`} value={`${day.toString()}: ${slot.Start.toString()} - ${slot.End.toString()}`} />
               }
               )
             )}

@@ -6,8 +6,6 @@ import buttonStyles from '../styles/Buttons.style';
 import TracktivHeader from '../UI/Header';
 import ActivityCard from '../UI/ActivityCard';
 import { activities } from '../static/data';
-import { connect } from 'react-redux';
-import { watchActivityData } from './../redux/app-redux';
 import firebase from 'react-native-firebase';
 import Activity from '../UI/Activity';
 
@@ -37,8 +35,6 @@ class StartScreen extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const activities = [];
     querySnapshot.forEach((doc) => {
-      console.log(doc);
-
       const { title, duration, slot } = doc.data();
 
       activities.push({
@@ -111,10 +107,4 @@ class StartScreen extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-  const { scheduledActivities } = state;
-  return { scheduledActivities }
-}
-
-
-export default connect(mapStateToProps)(StartScreen)
+export default StartScreen
