@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableHighlight, Image, ScrollView, FlatList } from 'react-native';
+import { Text, View, TouchableHighlight, Image, ScrollView, FlatList, ActivityIndicator } from 'react-native';
 import Layout from '../UI/Layout';
 import styles, { colors } from '../styles/index.style';
 import buttonStyles from '../styles/Buttons.style';
@@ -25,7 +25,7 @@ class StartScreen extends Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
 
   componentWillUnmount() {
@@ -52,8 +52,10 @@ class StartScreen extends Component {
   }
 
   render() {
-    const { activities, scheduledActivities } = this.state;
+    const { activities, scheduledActivities, loading } = this.state;
+
     return (
+
       <Layout>
         <TracktivHeader />
         <ScrollView style={styles.container}>
@@ -71,6 +73,8 @@ class StartScreen extends Component {
 
           <View>
             <Text style={[styles.headline2, styles.textBlack, { marginBottom: 20 }]}>Scheduled Activities</Text>
+
+
 
             {scheduledActivities ? (
               <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap' }}>
