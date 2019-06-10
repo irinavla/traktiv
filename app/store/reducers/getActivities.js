@@ -21,7 +21,7 @@ const fetchActivitiesFail = (state, action) => {
   return updateObject(state, { loading: false })
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+const getActivitiesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.FETCH_ACTIVITIES_START:
       return fetchActivitiesStart(state, action);
@@ -36,3 +36,5 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state;
   }
 }
+
+export default getActivitiesReducer

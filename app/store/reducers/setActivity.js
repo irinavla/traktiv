@@ -33,15 +33,15 @@ const setActivitySlot = (state, action) => {
   return state;
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+const setActivityReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.SET_ACTIVITY_TYPE:
       return setActivityType(state, action);
 
-    case actionTypes.SET_ACTIVITY_SLOT:
+    case actionTypes.SET_ACTIVITY_DURATION:
       return setActivityDuration(state, action);
 
-    case actionTypes.FETCH_ACTIVITIES_FAIL:
+    case actionTypes.SET_ACTIVITY_SLOT:
       return setActivitySlot(state, action);
 
     default:
@@ -49,4 +49,4 @@ const reducer = (state = INITIAL_STATE, action) => {
   }
 }
 
-export const reducer
+export default setActivityReducer

@@ -9,6 +9,9 @@ import { activities } from '../static/data';
 import firebase from 'react-native-firebase';
 import Activity from '../UI/Activity';
 
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/getActivities';
+
 class StartScreen extends Component {
 
   constructor(props) {
@@ -20,7 +23,7 @@ class StartScreen extends Component {
     this.state = {
       activities,
       scheduledActivities: [],
-      loading: true
+      loading: true,
     }
   }
 
@@ -111,4 +114,12 @@ class StartScreen extends Component {
 }
 
 
-export default StartScreen
+const mapStateToProps = state => {
+  return {
+    scheduledActivities: state.activities,
+    loading: state.loading
+  }
+}
+
+
+export default connect(mapStateToProps)(StartScreen)
