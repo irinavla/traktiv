@@ -19,3 +19,6 @@ export const fetchActivitiesFail = (error) => {
     error: error
   }
 }
+
+
+// TO DO fetch activities from Firebase with error handling
